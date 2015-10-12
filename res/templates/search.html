@@ -1,0 +1,97 @@
+<html>
+<head>
+    <link rel="shortcut icon" href="/images/furby.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Search Dinky Corpus $id</title>
+    <script type="text/javascript">
+        var lookup = {
+        #set($n=0)
+        #foreach($icon in $icons)
+         $n: "$icon",
+        #set($n=$n+1)
+        #end
+        }
+
+        var searchExpr = [];
+
+        function type(n) {
+            var icon = lookup[n];
+            searchExpr.push(n);
+            var index = searchExpr.length;
+            var opt = document.getElementById("output"+index);
+            opt.src = icon;
+            enableSearchButtons(false);
+        }
+
+        function backspace() {
+            if (searchExpr.length == 0) return;
+            var index = searchExpr.length;
+            var opt = document.getElementById("output"+index);
+            opt.src = "/images/Blank.png";
+            searchExpr.pop();
+            enableSearchButtons(searchExpr.length == 0);
+        }
+
+        function enableSearchButtons(disabled) {
+            var b = document.getElementById("find_any");
+            b.disabled = disabled;
+            b = document.getElementById("find_all");
+            b.disabled = disabled;
+            b = document.getElementById("find_best");
+            b.disabled = disabled;
+        }
+
+        function doAnyQuery() {
+            var form = document.getElementById("searchAny");
+            form.action = "/query/$id/any/".concat(searchExpr.toString());
+            form.submit();
+        }
+
+        function doAllQuery() {
+            var form = document.getElementById("searchAll");
+            form.action = "/query/$id/all/".concat(searchExpr.toString());
+            form.submit();
+        }
+
+        function doBestQuery() {
+            var form = document.getElementById("searchBest");
+            form.action = "/query/$id/best/".concat(searchExpr.toString());
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+<h1>Search <A HREF="/corpus/$id">Corpus $id</A></h1>
+<h2>$stories.size() documents</h2>
+
+<div class="keyboard">
+    #set($n=0)
+    #foreach($icon in $icons)
+    <img id="button$n" src="$icon" onclick="type($n)"/>
+    #set($n=$n+1)
+    #end
+</div>
+
+<P/>
+<img class="controlButton" id="backspaceButton" src="/images/backspace.svg" onclick="backspace()"/>
+<P/>
+
+<div class="output">
+    #foreach($i in [1..$searchMax])
+    <img id="output$i" style="border-style: none" src="/images/Blank.png"/>
+    #end
+</div>
+<P/>
+
+<form id="searchAny" class="search" onsubmit="doAnyQuery()">
+    <input type="submit" id="find_any" value = "Find Any" disabled/>
+</form>
+<form id="searchAll" class="search" onsubmit="doAllQuery()">
+    <input type="submit" id="find_all" value = "Find All" disabled/>
+</form>
+<form id="searchBest" class="search" onsubmit="doBestQuery()">
+    <input type="submit" id="find_best" value = "Find Best" disabled/>
+</form>
+
+</body>
+</html>

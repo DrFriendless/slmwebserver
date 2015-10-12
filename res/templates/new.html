@@ -1,0 +1,28 @@
+<html>
+<head>
+    <link rel="shortcut icon" href="/images/furby.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Dinky Corpus</title>
+</head>
+<body>
+<h1>Dinky Corpus</h1>
+
+<div class="apk">
+<A HREF="/app/dinky.apk">Android App</A>
+</div>
+
+<form id="createform" action="/create">
+    <input id="newbutton" type="image" src="/images/new-icon.png" alt="Create New Corpus">
+</form>
+
+<hr>
+<div class="display">
+    #foreach($row in $icons)
+    #foreach($icon in $row)
+    <img src="$icon">
+    #end
+    <BR>
+    #end
+</div>
+</body>
+</html>

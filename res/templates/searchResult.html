@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="shortcut icon" href="/images/furby.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Search Results for Dinky Corpus $id</title>
+</head>
+<body>
+<h1>Search Results for <A HREF="/corpus/$id">Corpus $id</A></h1>
+<h2>$results.size() results shown.</h2>
+
+<form class="gotosearch" action="/search/$id">
+    <input id="searchbutton" type="submit" value="Search">
+</form>
+
+<div class="searchResults">
+    #foreach($story in $results)
+        #foreach($icon in $story)
+        <img style="border-style: none" src="$icon"/>
+        #end
+        <HR>
+    #end
+</div>
+
+</body>
+</html>

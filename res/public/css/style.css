@@ -1,0 +1,77 @@
+body {
+    background-color: #dddddd;
+}
+
+#passphrase {
+    height: 50px;
+    width: 400px;
+    font-size: 24pt;
+}
+
+div.keyboard {
+    text-align: center;
+}
+
+div.display {
+    text-align: center;
+}
+
+div.keyboard img {
+    border: 4px outset black;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+div.output {
+    border: 1px solid black;
+    height: 200px;
+}
+
+div.output img {
+    border: 0px none;
+    width: 60px;
+    height: 60px;
+}
+
+.controlButton {
+    width: 60px;
+    height: 60px;
+}
+
+form.search input[type="submit"] {
+    background:#09C;
+    color:#fff;
+    font-weight: bold;
+    font-size: 150%;
+    height:36px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 10px;
+    border: 1px solid #999;
+}
+
+form.search input[type="submit"]:disabled {
+    background:#444;
+    color:#888;
+}
+
+#createform {
+    text-align: center;
+}
+
+form.gotosearch input[type="submit"] {
+    background:#09C;
+    color:#fff;
+    font-weight: bold;
+    font-size: 150%;
+    height:36px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 10px;
+    border: 1px solid #999;
+}
+
+div.apk {
+    text-align: right;
+}

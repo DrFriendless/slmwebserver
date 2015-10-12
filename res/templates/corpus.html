@@ -1,0 +1,22 @@
+<html>
+<head>
+    <link rel="shortcut icon" href="/images/furby.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Dinky Corpus $id</title>
+</head>
+<body>
+<h1>Dinky Corpus $id</h1>
+<h2>$totalWords words in $documentCount documents</h2>
+<form class="gotosearch" action="/search/$id">
+    <input id="searchbutton" type="submit" value="Search">
+</form>
+<ol>
+    #foreach($story in $stories)
+    #foreach($icon in $story)
+    <img src="$icon">
+    #end
+    <BR>
+    #end
+</ol>
+</body>
+</html>
